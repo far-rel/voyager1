@@ -1,4 +1,4 @@
 voyager1
 ========
 
-HTTP server and web framewokr
+HTTP server and web framework
