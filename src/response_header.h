@@ -1,8 +1,8 @@
-#ifndef VG1_RESPONSE_HEADER_H
-#define VG1_RESPONSE_HEADER_H
+#ifndef VOY_RESPONSE_HEADER_H
+#define VOY_RESPONSE_HEADER_H
 #include <glib.h>
 
-typedef struct ResponseHeader{
+typedef struct VoyResponseHeader{
   gchar *access_control_allow_origin;
   gchar *accept_ranges;
   gchar *age;
@@ -37,6 +37,6 @@ typedef struct ResponseHeader{
   gchar *via;
   gchar *warning;
   gchar *www_authenticate;
-} ResponseHeader;
+} VoyResponseHeader;
 
 #endif
