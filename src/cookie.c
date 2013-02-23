@@ -13,11 +13,16 @@ struct VoyCookie* voy_cookie_parse(gchar const *cookie_string) {
   splitted = g_strsplit(cookie_string, "; ", -1);
   token = splitted[i];
   while (token != NULL) {
-    char** key_value = g_strsplit(token, "=", 2);
+    gchar** key_value = g_strsplit(token, "=", 2);
     voy_cookie_set_value(cookie, key_value[0], key_value[1]);
+    g_free(key_value[0]);
+    g_free(key_value[1]);
+    g_free(key_value);
+    g_free(token);
     i++;
     token = splitted[i];
   }
+  g_free(splitted);
   return cookie;
 }
 
@@ -57,9 +62,9 @@ gchar* voy_cookie_print(struct VoyCookie const *cookie) {
 
 void voy_cookie_set_value(struct VoyCookie *cookie, gchar * const key, gchar * const value) {
   if (g_strcmp0(key, "Domain") == 0) {
-    cookie->domain = value;
+    cookie->domain = g_strdup(value);
   } else if (g_strcmp0(key, "Path") == 0) {
-    cookie->path = value;
+    cookie->path = g_strdup(value);
   } else if (g_strcmp0(key, "Expires") == 0) {
     cookie->expires = voy_cookie_parse_expires_date(value);
   } else if (g_strcmp0(key, "Secure") == 0) {
@@ -67,8 +72,8 @@ void voy_cookie_set_value(struct VoyCookie *cookie, gchar * const key, gchar * c
   } else if (g_strcmp0(key, "HttpOnly") == 0) {
     cookie->http_only = TRUE;
   } else {
-    cookie->name = key;
-    cookie->value = value;
+    cookie->name = g_strdup(key);
+    cookie->value = g_strdup(value);
   }
 
 }
