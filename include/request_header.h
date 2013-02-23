@@ -37,6 +37,6 @@ typedef struct RequestHeader{
 } RequestHeader;
 
 static struct RequestHeader* initialize_request_header(GPtrArray *request_query);
-static void set_request_fields(gchar* key, gchar* value, RequestHeader *request_header);
+static void set_request_fields(const gchar* key, const gchar* value, RequestHeader *request_header);
 static void g_print_request_fields(RequestHeader *request_header);
 #endif /*REQUEST_HEADER_H_*/
