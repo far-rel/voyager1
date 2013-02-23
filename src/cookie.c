@@ -6,7 +6,7 @@
 
 struct VoyCookie* voy_cookie_parse(gchar const *cookie_string) {
   struct VoyCookie* cookie;
-  cookie = malloc(sizeof (struct VoyCookie));
+  cookie = calloc(sizeof (struct VoyCookie), 1);
   gchar **splitted;
   int i = 0;
   gchar* token;
@@ -62,16 +62,21 @@ gchar* voy_cookie_print(struct VoyCookie const *cookie) {
 
 void voy_cookie_set_value(struct VoyCookie *cookie, gchar * const key, gchar * const value) {
   if (g_strcmp0(key, "Domain") == 0) {
+    if (cookie->domain != NULL) g_free(cookie->domain);
     cookie->domain = g_strdup(value);
   } else if (g_strcmp0(key, "Path") == 0) {
+    if (cookie->path != NULL) g_free(cookie->path);
     cookie->path = g_strdup(value);
   } else if (g_strcmp0(key, "Expires") == 0) {
-    cookie->expires = voy_cookie_parse_expires_date(value);
+    if (cookie->expires != NULL) g_date_time_unref(cookie->expires);
+      cookie->expires = voy_cookie_parse_expires_date(value);
   } else if (g_strcmp0(key, "Secure") == 0) {
     cookie->secure = TRUE;
   } else if (g_strcmp0(key, "HttpOnly") == 0) {
     cookie->http_only = TRUE;
   } else {
+    if (cookie->name != NULL) g_free(cookie->name);
+    if (cookie->value != NULL) g_free(cookie->value);
     cookie->name = g_strdup(key);
     cookie->value = g_strdup(value);
   }
@@ -131,13 +136,4 @@ void voy_cookie_free(struct VoyCookie *cookie) {
     }
     g_free(cookie);
   }
-}
-
-void main() {
-  struct VoyCookie *cookie = 
-    voy_cookie_parse("SSID=Ap4P….GTEq; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly");
-  voy_cookie_set_value(cookie, "Name", "ASDSAASD");
-  voy_cookie_print_screen(cookie);
-  g_print("%s\n", voy_cookie_print(cookie));
-  voy_cookie_free(cookie);  
 }
