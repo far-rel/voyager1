@@ -30,6 +30,7 @@ typedef struct VoyResponseHeader{
   gchar *retry_after;
   gchar *server;
   gchar *set_cookie;
+  gchar *status;
   gchar *strict_transport_security;
   gchar *trailer;
   gchar *transfer_encoding;

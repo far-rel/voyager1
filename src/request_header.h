@@ -13,7 +13,7 @@ typedef struct RequestHeader{
   gchar *connection;
   gchar *cookie;
   gchar *content_length;
-  gchar *content_m_d5;
+  gchar *content_md5;
   gchar *content_type;
   gchar *date;
   gchar *expect;
@@ -37,6 +37,7 @@ typedef struct RequestHeader{
 } RequestHeader;
 
 extern struct RequestHeader* initialize_request_header(GPtrArray *request_query);
-extern void set_request_fields(const gchar* key, const gchar* value, RequestHeader *request_header);
+extern void set_request_fields(gchar* const key,  gchar* const value, RequestHeader *request_header);
 extern void g_print_request_fields(RequestHeader *request_header);
+extern void g_free_request_header(RequestHeader *request_header);
 #endif /*REQUEST_HEADER_H_*/

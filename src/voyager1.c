@@ -11,7 +11,6 @@
 #include "response_header.h"
 #include "server.h"
 
-extern GTcpSocket* normal_server;
 int main(int argc, char **argv) {
   GTcpSocket *server;
   GTcpSocket *client = NULL;
@@ -26,12 +25,12 @@ int main(int argc, char **argv) {
     g_timer_start(benchmark_time);
 
     handle_client(client);
-    gnet_tcp_socket_delete (client);
-
     g_timer_stop(benchmark_time);
     g_print("Client handled within: %2.2fms\n\n", g_timer_elapsed(benchmark_time, NULL) * 1000);
+    gnet_tcp_socket_delete (client);
+
   }
-  g_timer_reset(benchmark_time);
+  g_timer_reset(benchmark_time); 
 
   exit(EXIT_SUCCESS);
   return 0;

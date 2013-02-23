@@ -89,5 +89,6 @@ handle_client(GTcpSocket *client) {
   write_buffer_n = strlen(write_buffer);
   gnet_io_channel_writen(ioclient, write_buffer, write_buffer_n, &write_buffer_n);
   g_ptr_array_free(request_query, TRUE);
+  
 }
 

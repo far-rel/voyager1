@@ -23,7 +23,9 @@ libvoyager: $(FILES)
 	ar rcs libvoyager.a $(FILES)
 
 clean:
-	rm request_header.o response_header.o server.o libvoyager.a
+	rm -f request_header.o response_header.o server.o libvoyager.a
 
-voyager1: src/voyager1.c libvoyager
-	gcc src/voyager1.c  $(GFLAGS) $(GLIBS) -lvoyager -L. -o voyager1
+voyager1: clean libvoyager src/voyager1.c 
+	gcc src/voyager1.c  $(GFLAGS) $(GLIBS) -lvoyager -L. -o voyager1.out
+	chmod +x voyager1.out
+	rm -f request_header.o response_header.o server.o libvoyager.a	
