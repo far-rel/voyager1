@@ -4,7 +4,7 @@
 #include "request_header.h"
 
 static struct RequestHeader* initialize_request_header(GPtrArray *request_query) {
-  struct RequestHeader *header = (RequestHeader*)malloc(sizeof(RequestHeader));
+  struct RequestHeader *header = malloc(sizeof(struct RequestHeader));
   int i;
 
   for(i = 0; i < request_query->len; i++) {
@@ -13,106 +13,109 @@ static struct RequestHeader* initialize_request_header(GPtrArray *request_query)
     tmp = (gchar*)g_ptr_array_index(request_query, i);
     splitted = g_strsplit(tmp, ": ", 0);
     set_request_fields(splitted[0], splitted[1], header);
+    g_strfreev(splitted);
   }
   return header;
 }
 
-void set_request_fields(gchar* key, gchar* value, RequestHeader *request_header) {
-  if(key == NULL) {
+void set_request_fields(const gchar* key, const gchar* value, RequestHeader *request_header) {
+  gchar* tmp = value;
+  if(key == NULL || value == NULL) {
     return;
   }
+  
   if (g_strcmp0(key, "Accept") == 0) {
-    request_header->accept = value;
+     request_header->accept = tmp;
   }
   else if (g_strcmp0(key, "AcceptCharset") == 0) {
-    request_header->accept_charset = value;
+     request_header->accept_charset = tmp;
   }
   else if (g_strcmp0(key, "AcceptEncoding") == 0) {
-    request_header->accept_encoding = value;
+     request_header->accept_encoding = tmp;
   }
   else if (g_strcmp0(key, "AcceptLanguage") == 0) {
-    request_header->accept_language = value;
+     request_header->accept_language = tmp;
   }
   else if (g_strcmp0(key, "AcceptDatetime") == 0) {
-    request_header->accept_datetime = value;
+     request_header->accept_datetime = tmp;
   }
   else if (g_strcmp0(key, "Authorization") == 0) {
-    request_header->authorization = value;
+     request_header->authorization = tmp;
   }
   else if (g_strcmp0(key, "CacheControl") == 0) {
-    request_header->cache_control = value;
+     request_header->cache_control = tmp;
   }
   else if (g_strcmp0(key, "Connection") == 0) {
-    request_header->connection = value;
+     request_header->connection = tmp;
   }
   else if (g_strcmp0(key, "Cookie") == 0) {
-    request_header->cookie = value;
+     request_header->cookie = tmp;
   }
   else if (g_strcmp0(key, "ContentLength") == 0) {
-    request_header->content_length = value;
+     request_header->content_length = tmp;
   }
   else if (g_strcmp0(key, "ContentMD5") == 0) {
-    request_header->content_m_d5 = value;
+     request_header->content_m_d5 = tmp;
   }
   else if (g_strcmp0(key, "ContentType") == 0) {
-    request_header->content_type = value;
+     request_header->content_type = tmp;
   }
   else if (g_strcmp0(key, "Date") == 0) {
-    request_header->date = value;
+     request_header->date = tmp;
   }
   else if (g_strcmp0(key, "Expect") == 0) {
-    request_header->expect = value;
+     request_header->expect = tmp;
   }
   else if (g_strcmp0(key, "From") == 0) {
-    request_header->from = value;
+     request_header->from = tmp;
   }
   else if (g_strcmp0(key, "Host") == 0) {
-    request_header->host = value;
+     request_header->host = tmp;
   }
   else if (g_strcmp0(key, "IfMatch") == 0) {
-    request_header->if_match = value;
+     request_header->if_match = tmp;
   }
   else if (g_strcmp0(key, "IfModifiedSince") == 0) {
-    request_header->if_modified_since = value;
+     request_header->if_modified_since = tmp;
   }
   else if (g_strcmp0(key, "IfNoneMatch") == 0) {
-    request_header->if_none_match = value;
+     request_header->if_none_match = tmp;
   }
   else if (g_strcmp0(key, "IfRange") == 0) {
-    request_header->if_range = value;
+     request_header->if_range = tmp;
   }
   else if (g_strcmp0(key, "IfUnmodifiedSince") == 0) {
-    request_header->if_unmodified_since = value;
+     request_header->if_unmodified_since = tmp;
   }
   else if (g_strcmp0(key, "MaxForwards") == 0) {
-    request_header->max_forwards = value;
+     request_header->max_forwards = tmp;
   }
   else if (g_strcmp0(key, "Pragma") == 0) {
-    request_header->pragma = value;
+     request_header->pragma = tmp;
   }
   else if (g_strcmp0(key, "ProxyAuthorization") == 0) {
-    request_header->proxy_authorization = value;
+     request_header->proxy_authorization = tmp;
   }
   else if (g_strcmp0(key, "Range") == 0) {
-    request_header->range = value;
+     request_header->range = tmp;
   }
   else if (g_strcmp0(key, "Referer") == 0) {
-    request_header->referer = value;
+     request_header->referer = tmp;
   }
   else if (g_strcmp0(key, "Te") == 0) {
-    request_header->te = value;
+     request_header->te = tmp;
   }
   else if (g_strcmp0(key, "Upgrade") == 0) {
-    request_header->upgrade = value;
+     request_header->upgrade = tmp;
   }
   else if (g_strcmp0(key, "UserAgent") == 0) {
-    request_header->user_agent = value;
+     request_header->user_agent = tmp;
   }
   else if (g_strcmp0(key, "Via") == 0) {
-    request_header->via = value;
+     request_header->via = tmp;
   }
   else if (g_strcmp0(key, "Warning") == 0) {
-    request_header->warning = value;
+     request_header->warning = tmp;
   }
 }
 

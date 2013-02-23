@@ -83,6 +83,7 @@ handle_client(GTcpSocket *client) {
 
   
   request_header = initialize_request_header(request_query);
+  g_print_request_fields(request_header);
   
   g_stpcpy(write_buffer, "HTTP/1.0 200 OK\r\nContent-type: text/html; charset=utf-8\r\n\r\n<h1>Hello from server!</h1>");
   write_buffer_n = strlen(write_buffer);
