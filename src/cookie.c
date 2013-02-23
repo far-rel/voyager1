@@ -85,10 +85,3 @@ void voy_cookie_print_screen(struct VoyCookie const *cookie){
     g_print("\thttp_only: %d\n", cookie->http_only);
   }
 }
-
-int main(){
-  struct VoyCookie *cookie = voy_cookie_parse("LSID=DQAAAK…Eaem_vYg; Domain=docs.foo.com; Path=/accounts; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly");
-  voy_cookie_print_screen(cookie);
-  g_print("Cookie: %s\n", voy_cookie_print(cookie));
-  return 1;  
-}
