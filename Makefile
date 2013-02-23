@@ -11,10 +11,10 @@ FILES=request_header.o response_header.o server.o
 all: voyager1
 
 request_header.o: src/request_header.c
-	gcc $(GLIB) $(CFLAGS) -c src/request_header.c 
+	gcc $(GLIB) $(CFLAGS) src/request_header.c -c 
 	
 response_header.o: src/response_header.c
-	gcc $(GLIB) $(CFLAGS) -c src/response_header.c 
+	gcc $(GLIB) $(CFLAGS) src/response_header.c -c
 	
 server.o: src/server.c
 	gcc $(GLIB) $(GNET) $(CFLAGS) src/server.c -c 
