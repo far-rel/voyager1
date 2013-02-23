@@ -1,18 +1,18 @@
 #include <glib.h>
 #include <gnet.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 #include "server.h"
 #include "request_header.h"
 
-static void 
+void 
 normal_sig_int (int signum) {
-  gnet_tcp_socket_delete (normal_server);
   exit (EXIT_FAILURE);
 }
 
-static GTcpSocket*
+GTcpSocket*
 initialize_server(gint server_port) {
   GTcpSocket *server;
   GInetAddr *addr;
@@ -20,7 +20,6 @@ initialize_server(gint server_port) {
   gchar *name;
 
   server = gnet_tcp_socket_server_new_with_port(server_port);
-  normal_server = server;
   
   addr = gnet_tcp_socket_get_local_inetaddr(server);
   g_assert(addr);
@@ -37,7 +36,7 @@ initialize_server(gint server_port) {
   return server;
 }
 
-static void
+void
 handle_client(GTcpSocket *client) {
   RequestHeader *request_header;
   GIOChannel *ioclient;

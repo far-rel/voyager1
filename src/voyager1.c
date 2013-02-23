@@ -11,6 +11,7 @@
 #include "response_header.h"
 #include "server.h"
 
+extern GTcpSocket* normal_server;
 int main(int argc, char **argv) {
   GTcpSocket *server;
   GTcpSocket *client = NULL;

@@ -3,7 +3,7 @@
 
 #include "request_header.h"
 
-static struct RequestHeader* initialize_request_header(GPtrArray *request_query) {
+struct RequestHeader* initialize_request_header(GPtrArray *request_query) {
   struct RequestHeader *header = malloc(sizeof(struct RequestHeader));
   int i;
 
@@ -119,7 +119,7 @@ void set_request_fields(const gchar* key, const gchar* value, RequestHeader *req
   }
 }
 
-static void g_print_request_fields(RequestHeader *request_header) {
+void g_print_request_fields(RequestHeader *request_header) {
   g_print("Printing request_headers: \n");
   if(request_header->accept != NULL) {
     g_print("\taccept: %s\n", request_header->accept);
