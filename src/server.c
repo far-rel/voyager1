@@ -72,23 +72,22 @@ handle_client(GTcpSocket *client) {
                                             sizeof(read_buffer), 
                                             &read_buffer_n)) == G_IO_ERROR_NONE && (read_buffer_n > 0))
   {
-    gchar* tmp;
     if(g_strcmp0(read_buffer, BLANK_LINE) == 0) {
       break;
     }else {
-      tmp = g_strdup(read_buffer);
-      g_ptr_array_add(request_query, tmp);
+      g_ptr_array_add(request_query, g_strdup(read_buffer));
     }
   }
 
-  
-  request_header = initialize_request_header(request_query);
-  g_print_request_fields(request_header);
-  
+  request_header = voy_request_header_initialize();
+  voy_request_header_create(request_query, request_header);
+  voy_request_header_print(request_header);
+   
   g_stpcpy(write_buffer, "HTTP/1.0 200 OK\r\nContent-type: text/html; charset=utf-8\r\n\r\n<h1>Hello from server!</h1>");
   write_buffer_n = strlen(write_buffer);
   gnet_io_channel_writen(ioclient, write_buffer, write_buffer_n, &write_buffer_n);
   g_ptr_array_free(request_query, TRUE);
-  
+  gnet_inetaddr_delete (addr);
+  voy_request_header_free(request_header);
 }
 

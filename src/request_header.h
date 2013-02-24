@@ -2,7 +2,13 @@
 #define REQUEST_HEADER_H_
 #include <glib.h>
 
+#define CRLF "\n\r"
+
 typedef struct RequestHeader{
+  gchar *method;
+  gchar *url;
+  gchar *http_version;
+
   gchar *accept;
   gchar *accept_charset;
   gchar *accept_encoding;
@@ -36,8 +42,11 @@ typedef struct RequestHeader{
   gchar *warning;
 } RequestHeader;
 
-extern struct RequestHeader* initialize_request_header(GPtrArray *request_query);
-extern void set_request_fields(gchar* const key,  gchar* const value, RequestHeader *request_header);
-extern void g_print_request_fields(RequestHeader *request_header);
-extern void g_free_request_header(RequestHeader *request_header);
+extern RequestHeader* voy_request_header_initialize();
+extern void           voy_request_header_set(gchar* const key,  gchar* const value, RequestHeader *request_header);
+extern gchar*         voy_request_header_get(gchar* const key, RequestHeader *request_header);
+extern void           voy_request_header_print(RequestHeader *request_header);
+extern void           voy_request_header_free(RequestHeader *request_header);
+extern void           voy_request_header_create(GPtrArray *request_query, RequestHeader *request_header);
+extern void           voy_request_header_set_request(gchar* const request_string, RequestHeader *request_header);
 #endif /*REQUEST_HEADER_H_*/
