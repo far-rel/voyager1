@@ -3,7 +3,7 @@
 
 #include <glib.h>
 
-char *VOY_COOKIE_TIME_FORMAT = "%a, %d-%b-%Y %H:%M:%S GMT";
+#define VOY_COOKIE_TIME_FORMAT "%a, %d-%b-%Y %H:%M:%S GMT"
 
 typedef struct VoyCookie{
   gchar *name;

@@ -19,7 +19,7 @@ struct VoyCookie *voy_cookie_parse(gchar const *cookie_string) {
     g_free(key_value[1]);
     g_free(key_value);
     g_free(token);
-    i++;
+    ++i;
     token = splitted[i];
   }
   g_free(splitted);
@@ -85,27 +85,27 @@ void voy_cookie_set_value(struct VoyCookie *cookie, gchar const *key, gchar cons
 
 void voy_cookie_print_screen(struct VoyCookie const *cookie) {
   if (cookie->name != NULL) {
-    g_print("\tname: %s\n", cookie->name);
+    g_print("\t\tname: %s\n", cookie->name);
   }
   if (cookie->value != NULL) {
-    g_print("\tvalue: %s\n", cookie->value);
+    g_print("\t\tvalue: %s\n", cookie->value);
   }
   if (cookie->expires != NULL) {
     gchar *date_time = g_date_time_format(cookie->expires, VOY_COOKIE_TIME_FORMAT);
-    g_print("\texpires: %s\n", date_time);
+    g_print("\t\texpires: %s\n", date_time);
     g_free(date_time);
   }
   if (cookie->domain != NULL) {
-    g_print("\tdomain: %s\n", cookie->domain);
+    g_print("\t\tdomain: %s\n", cookie->domain);
   }
   if (cookie->path != NULL) {
-    g_print("\tpath: %s\n", cookie->path);
+    g_print("\t\tpath: %s\n", cookie->path);
   }
   if (cookie->secure != NULL) {
-    g_print("\tsecure: %d\n", cookie->secure);
+    g_print("\t\tsecure: %d\n", cookie->secure);
   }
   if (cookie->http_only != NULL) {
-    g_print("\thttp_only: %d\n", cookie->http_only);
+    g_print("\t\thttp_only: %d\n", cookie->http_only);
   }
 }
 

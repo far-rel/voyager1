@@ -1,120 +1,98 @@
-#include <glib.h>
-#include <stdlib.h>
-
 #include "request_header.h"
 
-
-void voy_request_header_set(gchar* const key, gchar* const value, RequestHeader *request_header) {
-  if(key == NULL || value == NULL) {
+void voy_request_header_set(gchar * const key, gchar * const value, RequestHeader *request_header) {
+  if (key == NULL || value == NULL) {
     return;
   }
-  
+
   if (g_strcmp0(key, "Method") == 0) {
-   request_header->method = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "URL") == 0) {
-   request_header->url = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "HTTP-Version") == 0) {
-   request_header->http_version = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Accept") == 0) {
-   request_header->accept = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "AcceptCharset") == 0) {
-  request_header->accept_charset = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "AcceptEncoding") == 0) {
-  request_header->accept_encoding = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "AcceptLanguage") == 0) {
-  request_header->accept_language = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "AcceptDatetime") == 0) {
-  request_header->accept_datetime = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Authorization") == 0) {
-  request_header->authorization = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "CacheControl") == 0) {
-  request_header->cache_control = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Connection") == 0) {
-  request_header->connection = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Cookie") == 0) {
-  request_header->cookie = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "ContentLength") == 0) {
-  request_header->content_length = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "ContentMD5") == 0) {
-  request_header->content_md5 = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "ContentType") == 0) {
-  request_header->content_type = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Date") == 0) {
-  request_header->date = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Expect") == 0) {
-  request_header->expect = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "From") == 0) {
-  request_header->from = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Host") == 0) {
-  request_header->host = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "IfMatch") == 0) {
-  request_header->if_match = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "IfModifiedSince") == 0) {
-  request_header->if_modified_since = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "IfNoneMatch") == 0) {
-  request_header->if_none_match = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "IfRange") == 0) {
-  request_header->if_range = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "IfUnmodifiedSince") == 0) {
-  request_header->if_unmodified_since = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "MaxForwards") == 0) {
-  request_header->max_forwards = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Pragma") == 0) {
-  request_header->pragma = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "ProxyAuthorization") == 0) {
-  request_header->proxy_authorization = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Range") == 0) {
-  request_header->range = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Referer") == 0) {
-  request_header->referer = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "te") == 0) {
-  request_header->te = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Upgrade") == 0) {
-  request_header->upgrade = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "UserAgent") == 0) {
-  request_header->user_agent = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Via") == 0) {
-  request_header->via = g_strdup(value);
-  }
-  else if (g_strcmp0(key, "Warning") == 0) {
-  request_header->warning = g_strdup(value);
+    request_header->method = g_strdup(value);
+  } else if (g_strcmp0(key, "URL") == 0) {
+    request_header->url = g_strdup(value);
+  } else if (g_strcmp0(key, "HTTP-Version") == 0) {
+    request_header->http_version = g_strdup(value);
+  } else if (g_strcmp0(key, "Accept") == 0) {
+    request_header->accept = g_strdup(value);
+  } else if (g_strcmp0(key, "AcceptCharset") == 0) {
+    request_header->accept_charset = g_strdup(value);
+  } else if (g_strcmp0(key, "AcceptEncoding") == 0) {
+    request_header->accept_encoding = g_strdup(value);
+  } else if (g_strcmp0(key, "AcceptLanguage") == 0) {
+    request_header->accept_language = g_strdup(value);
+  } else if (g_strcmp0(key, "AcceptDatetime") == 0) {
+    request_header->accept_datetime = g_strdup(value);
+  } else if (g_strcmp0(key, "Authorization") == 0) {
+    request_header->authorization = g_strdup(value);
+  } else if (g_strcmp0(key, "CacheControl") == 0) {
+    request_header->cache_control = g_strdup(value);
+  } else if (g_strcmp0(key, "Connection") == 0) {
+    request_header->connection = g_strdup(value);
+  } else if (g_strcmp0(key, "Cookie") == 0) {
+    gchar *cookie;
+    gchar **cookies;
+    int i = 0;
+    if (request_header->cookies == NULL) {
+      request_header->cookies = g_ptr_array_new_with_free_func((GDestroyNotify) voy_cookie_free);
+    }
+    cookies = g_strsplit(value, "; ", -1);
+    cookie = cookies[i];
+    while (cookie != NULL) {
+      struct VoyCookie *cookie_ptr = voy_cookie_parse(cookie);
+      g_ptr_array_add(request_header->cookies, (gpointer) cookie_ptr);
+      g_free(cookie);
+      ++i;
+      cookie = cookies[i];
+    }
+    g_free(cookies);    
+  } else if (g_strcmp0(key, "ContentLength") == 0) {
+    request_header->content_length = g_strdup(value);
+  } else if (g_strcmp0(key, "ContentMD5") == 0) {
+    request_header->content_md5 = g_strdup(value);
+  } else if (g_strcmp0(key, "ContentType") == 0) {
+    request_header->content_type = g_strdup(value);
+  } else if (g_strcmp0(key, "Date") == 0) {
+    request_header->date = g_strdup(value);
+  } else if (g_strcmp0(key, "Expect") == 0) {
+    request_header->expect = g_strdup(value);
+  } else if (g_strcmp0(key, "From") == 0) {
+    request_header->from = g_strdup(value);
+  } else if (g_strcmp0(key, "Host") == 0) {
+    request_header->host = g_strdup(value);
+  } else if (g_strcmp0(key, "IfMatch") == 0) {
+    request_header->if_match = g_strdup(value);
+  } else if (g_strcmp0(key, "IfModifiedSince") == 0) {
+    request_header->if_modified_since = g_strdup(value);
+  } else if (g_strcmp0(key, "IfNoneMatch") == 0) {
+    request_header->if_none_match = g_strdup(value);
+  } else if (g_strcmp0(key, "IfRange") == 0) {
+    request_header->if_range = g_strdup(value);
+  } else if (g_strcmp0(key, "IfUnmodifiedSince") == 0) {
+    request_header->if_unmodified_since = g_strdup(value);
+  } else if (g_strcmp0(key, "MaxForwards") == 0) {
+    request_header->max_forwards = g_strdup(value);
+  } else if (g_strcmp0(key, "Pragma") == 0) {
+    request_header->pragma = g_strdup(value);
+  } else if (g_strcmp0(key, "ProxyAuthorization") == 0) {
+    request_header->proxy_authorization = g_strdup(value);
+  } else if (g_strcmp0(key, "Range") == 0) {
+    request_header->range = g_strdup(value);
+  } else if (g_strcmp0(key, "Referer") == 0) {
+    request_header->referer = g_strdup(value);
+  } else if (g_strcmp0(key, "te") == 0) {
+    request_header->te = g_strdup(value);
+  } else if (g_strcmp0(key, "Upgrade") == 0) {
+    request_header->upgrade = g_strdup(value);
+  } else if (g_strcmp0(key, "UserAgent") == 0) {
+    request_header->user_agent = g_strdup(value);
+  } else if (g_strcmp0(key, "Via") == 0) {
+    request_header->via = g_strdup(value);
+  } else if (g_strcmp0(key, "Warning") == 0) {
+    request_header->warning = g_strdup(value);
   }
 }
 
-gchar* voy_request_header_get(gchar* const key, RequestHeader *request_header) {
-  if(key == NULL) 
+gchar* voy_request_header_get(gchar * const key, RequestHeader *request_header) {
+  if (key == NULL)
     return "";
 
   if (g_strcmp0(key, "method") == 0 && (request_header->method != NULL))
@@ -149,9 +127,6 @@ gchar* voy_request_header_get(gchar* const key, RequestHeader *request_header) {
 
   else if (g_strcmp0(key, "connection") == 0 && (request_header->connection != NULL))
     return request_header->connection;
-
-  else if (g_strcmp0(key, "cookie") == 0 && (request_header->cookie != NULL))
-    return request_header->cookie;
 
   else if (g_strcmp0(key, "content_length") == 0 && (request_header->content_length != NULL))
     return request_header->content_length;
@@ -218,14 +193,14 @@ gchar* voy_request_header_get(gchar* const key, RequestHeader *request_header) {
 
   else if (g_strcmp0(key, "warning") == 0 && (request_header->warning != NULL))
     return request_header->warning;
-  else 
+  else
     return "";
 
 }
 
 void voy_request_header_print(RequestHeader *request_header) {
   g_print("\tmethod:%s\n", voy_request_header_get("method", request_header));
-  g_print("\turl:%s\n", voy_request_header_get("url", request_header)); 
+  g_print("\turl:%s\n", voy_request_header_get("url", request_header));
   g_print("\thttp_version:%s\n", voy_request_header_get("http_version", request_header));
   g_print("\taccept:%s\n", voy_request_header_get("accept", request_header));
   g_print("\taccept_charset:%s\n", voy_request_header_get("accept_charset", request_header));
@@ -235,7 +210,7 @@ void voy_request_header_print(RequestHeader *request_header) {
   g_print("\tauthorization:%s\n", voy_request_header_get("authorization", request_header));
   g_print("\tcache_control:%s\n", voy_request_header_get("cache_control", request_header));
   g_print("\tconnection:%s\n", voy_request_header_get("connection", request_header));
-  g_print("\tcookie:%s\n", voy_request_header_get("cookie", request_header));
+  //  g_print("\tcookie:%s\n", voy_request_header_get("cookie", request_header));
   g_print("\tcontent_length:%s\n", voy_request_header_get("content_length", request_header));
   g_print("\tcontent_md5:%s\n", voy_request_header_get("content_md5", request_header));
   g_print("\tcontent_type:%s\n", voy_request_header_get("content_type", request_header));
@@ -258,120 +233,122 @@ void voy_request_header_print(RequestHeader *request_header) {
   g_print("\tuser_agent:%s\n", voy_request_header_get("user_agent", request_header));
   g_print("\tvia:%s\n", voy_request_header_get("via", request_header));
   g_print("\twarning:%s\n", voy_request_header_get("warning", request_header));
+  if (request_header->cookies != NULL) {
+    g_print("\tcookies:\n");
+    g_ptr_array_foreach(request_header->cookies, voy_cookie_print_screen, NULL);
+  }
 }
 
 void voy_request_header_free(RequestHeader *request_header) {
-  if(request_header != NULL) {
-    if(request_header->method != NULL) {
+  if (request_header != NULL) {
+    if (request_header->method != NULL) {
       g_free(request_header->method);
     }
-    if(request_header->url != NULL) {
+    if (request_header->url != NULL) {
       g_free(request_header->url);
     }
-    if(request_header->http_version != NULL) {
+    if (request_header->http_version != NULL) {
       g_free(request_header->http_version);
     }
-    if(request_header->accept != NULL) {
+    if (request_header->accept != NULL) {
       g_free(request_header->accept);
     }
-    if(request_header->accept_charset != NULL) {
+    if (request_header->accept_charset != NULL) {
       g_free(request_header->accept_charset);
     }
-    if(request_header->accept_encoding != NULL) {
+    if (request_header->accept_encoding != NULL) {
       g_free(request_header->accept_encoding);
     }
-    if(request_header->accept_language != NULL) {
+    if (request_header->accept_language != NULL) {
       g_free(request_header->accept_language);
     }
-    if(request_header->accept_datetime != NULL) {
+    if (request_header->accept_datetime != NULL) {
       g_free(request_header->accept_datetime);
     }
-    if(request_header->authorization != NULL) {
+    if (request_header->authorization != NULL) {
       g_free(request_header->authorization);
     }
-    if(request_header->cache_control != NULL) {
+    if (request_header->cache_control != NULL) {
       g_free(request_header->cache_control);
     }
-    if(request_header->connection != NULL) {
+    if (request_header->connection != NULL) {
       g_free(request_header->connection);
     }
-    if(request_header->cookie != NULL) {
-      g_free(request_header->cookie);
-    }
-    if(request_header->content_length != NULL) {
+    if (request_header->content_length != NULL) {
       g_free(request_header->content_length);
     }
-    if(request_header->content_md5 != NULL) {
+    if (request_header->content_md5 != NULL) {
       g_free(request_header->content_md5);
     }
-    if(request_header->content_type != NULL) {
+    if (request_header->content_type != NULL) {
       g_free(request_header->content_type);
     }
-    if(request_header->date != NULL) {
+    if (request_header->date != NULL) {
       g_free(request_header->date);
     }
-    if(request_header->expect != NULL) {
+    if (request_header->expect != NULL) {
       g_free(request_header->expect);
     }
-    if(request_header->from != NULL) {
+    if (request_header->from != NULL) {
       g_free(request_header->from);
     }
-    if(request_header->host != NULL) {
+    if (request_header->host != NULL) {
       g_free(request_header->host);
     }
-    if(request_header->if_match != NULL) {
+    if (request_header->if_match != NULL) {
       g_free(request_header->if_match);
     }
-    if(request_header->if_modified_since != NULL) {
+    if (request_header->if_modified_since != NULL) {
       g_free(request_header->if_modified_since);
     }
-    if(request_header->if_none_match != NULL) {
+    if (request_header->if_none_match != NULL) {
       g_free(request_header->if_none_match);
     }
-    if(request_header->if_range != NULL) {
+    if (request_header->if_range != NULL) {
       g_free(request_header->if_range);
     }
-    if(request_header->if_unmodified_since != NULL) {
+    if (request_header->if_unmodified_since != NULL) {
       g_free(request_header->if_unmodified_since);
     }
-    if(request_header->max_forwards != NULL) {
+    if (request_header->max_forwards != NULL) {
       g_free(request_header->max_forwards);
     }
-    if(request_header->pragma != NULL) {
+    if (request_header->pragma != NULL) {
       g_free(request_header->pragma);
     }
-    if(request_header->proxy_authorization != NULL) {
+    if (request_header->proxy_authorization != NULL) {
       g_free(request_header->proxy_authorization);
     }
-    if(request_header->range != NULL) {
+    if (request_header->range != NULL) {
       g_free(request_header->range);
     }
-    if(request_header->referer != NULL) {
+    if (request_header->referer != NULL) {
       g_free(request_header->referer);
     }
-    if(request_header->te != NULL) {
+    if (request_header->te != NULL) {
       g_free(request_header->te);
     }
-    if(request_header->upgrade != NULL) {
+    if (request_header->upgrade != NULL) {
       g_free(request_header->upgrade);
     }
-    if(request_header->user_agent != NULL) {
+    if (request_header->user_agent != NULL) {
       g_free(request_header->user_agent);
     }
-    if(request_header->via != NULL) {
+    if (request_header->via != NULL) {
       g_free(request_header->via);
     }
-    if(request_header->warning   != NULL) {
+    if (request_header->warning != NULL) {
       g_free(request_header->warning);
+    }
+    if (request_header->cookies != NULL){
+      g_ptr_array_free(request_header->cookies, TRUE);
     }
     g_free(request_header);
   }
 }
 
-
-
 RequestHeader* voy_request_header_initialize() {
-  RequestHeader *header = calloc(1, sizeof(struct RequestHeader));
+  RequestHeader *header = calloc(1, sizeof (struct RequestHeader));
   return header;
 }
 
@@ -380,17 +357,17 @@ void voy_request_header_create(GPtrArray *request_query, RequestHeader *request_
   gchar* request_params;
 
   //Header is ok, first line is our request
-  if(request_query->len > 0) {
-    request_params = (gchar*)g_ptr_array_index(request_query, 0);
+  if (request_query->len > 0) {
+    request_params = (gchar*) g_ptr_array_index(request_query, 0);
     voy_request_header_set_request(request_params, request_header);
     g_free(request_params);
   }
 
   //Iterate over request fields, and populate request_header
-  for(i = 1; i < request_query->len; i++) {
+  for (i = 1; i < request_query->len; i++) {
     gchar **request_fragment;
     gchar *tmp;
-    tmp = (gchar*)g_ptr_array_index(request_query, i);
+    tmp = (gchar*) g_ptr_array_index(request_query, i);
 
     //Split request_fragment into two strings: key, value
     request_fragment = g_strsplit(tmp, ": ", 2);
@@ -401,7 +378,7 @@ void voy_request_header_create(GPtrArray *request_query, RequestHeader *request_
   }
 }
 
-void voy_request_header_set_request(gchar* const request_string, RequestHeader *request_header) {
+void voy_request_header_set_request(gchar * const request_string, RequestHeader *request_header) {
   g_assert(request_string);
   gchar **request_params;
   request_params = g_strsplit(request_string, " ", 0);

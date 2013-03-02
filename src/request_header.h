@@ -1,6 +1,9 @@
 #ifndef REQUEST_HEADER_H_
 #define REQUEST_HEADER_H_
 #include <glib.h>
+#include <stdlib.h>
+
+#include "cookie.h"
 
 #define CRLF "\n\r"
 
@@ -17,7 +20,8 @@ typedef struct RequestHeader{
   gchar *authorization;
   gchar *cache_control;
   gchar *connection;
-  gchar *cookie;
+//  gchar *cookie;
+  GPtrArray* cookies;
   gchar *content_length;
   gchar *content_md5;
   gchar *content_type;
